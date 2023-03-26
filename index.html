@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,"/>
+    <title>Defilementdephotos</title>
+</head>
+<body>
+    <div id ="caroussel">
+        <div id ="container">
+    </div>
+    <img src="im/th.jpg" class="bouton" id="d" width="250px"  height="150px"/>
+    <img src="im/th.jpg" class="bouton" id="g" width="250px" height="150px"/>
+</div>
+<style>
+body{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image:url("../im/image002.png");
+    background-size: cover;
+}
+#caroussel{
+    width: 800px;
+    height: 400px;
+    border: solid 4px #FFF;
+    box-shadow:  0 0 14px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow:hidden; 
+}
+
+#container{
+    width: 800px;
+    height: 400px;
+    margin: 0;
+    display: inline-block;
+    background-size: cover;
+
+}
+
+.photo{
+    width: 800px;
+    height: 400px;
+    margin: 0;
+    display:inline-block; 
+    background-size: cover;
+}
+.bouton {
+    position: absolute;
+    width: 70px;
+    cursor: pointer;
+    top: 150px;
+}
+
+#g{
+    left: 0;
+    opacity: 0.4;
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+
+}
+#d{
+    right: 0;
+    opacity: 0.4;
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+
+}
+#g:hover{
+    transform: rotate(180deg) scale(1.1);
+    opacity: 1;
+}
+#d:hover{
+    transform: rotate(0deg) scale(1.1);
+    opacity: 1;
+
+}
+
+</style>
+
+
+<script>
+document.body.onload= function(){ // ON creer notre page 
+    nbr = 5;// anzahl unserer Bilder
+    p= 0;// aktuell position
+    container= document.getElementById("container");
+    g= document.getElementById("g");
+    d= document.getElementById("d");
+    container.style.width = (800*nbr)+"px";
+    for (i=0; i<=nbr; i++){
+        div= document.createElement("div");
+        div.className = "photo";
+        div.style.backgroundImage ="url('images/im"+i+".png')";// ON parcour nos 5 photos 
+        container.appendchild(div);
+
+
+    }
+
+    g.onclick=function(){
+        if(p>= -nbr+1) // left bouton 
+        p++;
+        container.style.transform="translate("+p*800+"px)";
+        container.style.transition = "all 0.5s ease";
+    }
+
+    d.onclick=function(){
+        if(p<0) // right bouton 
+        p++;
+        container.style.transform="translate("+p*800+"px)";
+        container.style.transition = "all 0.5s ease";
+
+    }
+    
+    
+
+}
+  
+</script>
+    
+</body>
+</html>
